@@ -1,0 +1,38 @@
+{
+  "name": "node-mysql-sqlbuilder",
+  "version": "1.0.0",
+  "description": "sql string generator for mysql in node",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "jest",
+    "dev": "gulp && node ./dist/index.js",
+    "eslint": "eslint src --ext .ts"
+  },
+  "author": "ayioz@icloud.com",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jest": "^25.2.1",
+    "@types/sqlstring": "^2.2.1",
+    "@typescript-eslint/eslint-plugin": "^2.28.0",
+    "@typescript-eslint/parser": "^2.28.0",
+    "browserify": "^16.5.1",
+    "del": "^5.1.0",
+    "eslint": "^6.8.0",
+    "eslint-plugin-jest": "^23.8.2",
+    "gulp": "^4.0.2",
+    "gulp-eslint": "^6.0.0",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-typescript": "^6.0.0-alpha.1",
+    "gulp-uglify": "^3.0.2",
+    "jest": "^25.3.0",
+    "ts-jest": "^25.4.0",
+    "tsify": "^4.0.1",
+    "typescript": "^3.8.3",
+    "vinyl-buffer": "^1.0.1",
+    "vinyl-source-stream": "^2.0.0"
+  },
+  "dependencies": {
+    "sqlstring": "^2.3.2"
+  }
+}

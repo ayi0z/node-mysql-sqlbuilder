@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "es6",
+        "moduleResolution": "node",
+        "allowJs": true,
+        "noImplicitAny": true,
+        "removeComments": true,
+        "strictNullChecks": true,
+        "strict": true,
+        "outDir": "dist/",
+        "baseUrl": "."
+    },
+    "include": [
+        "src", "test"
+    ],
+    "exclude": [
+        "node_modules", "gulpfile.js"
+    ]
+}
