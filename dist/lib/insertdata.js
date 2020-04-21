@@ -7,9 +7,10 @@ class InsertData {
         this.data = d;
     }
     toSql() {
+        var _a;
         let field, values;
         if (this.data instanceof index_1.Sql) {
-            if (this.data.fields?.length) {
+            if ((_a = this.data.fields) === null || _a === void 0 ? void 0 : _a.length) {
                 field = this.data.fields.map(f => f.toSql()).join(',');
                 values = this.data.SqlBuilder().select();
             }

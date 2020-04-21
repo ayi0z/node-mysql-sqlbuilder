@@ -1,6 +1,7 @@
 var gulp = require('gulp')
 var gts = require('gulp-typescript')
 var buffer = require('vinyl-buffer')
+var sourcemaps = require('gulp-sourcemaps')
 var terser = require('gulp-terser')
 var eslint = require('gulp-eslint')
 
@@ -23,8 +24,16 @@ var build = () => {
         .pipe(ts())
         .js
         .pipe(buffer())
+        .pipe(sourcemaps.init())
         .pipe(terser())
+        .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest('dist'))
 }
+
+// var terser = () => {
+//     return gulp.src('./dist/index.js')
+//         .pipe(terser())
+//         .pipe(gulp.dest('dist'))
+// }
 
 exports.default = series(tEslint, tClearDist, build)

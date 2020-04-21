@@ -22,7 +22,8 @@ class Join {
         throw new Error('Must bind sql instance.');
     }
     toSql() {
-        if (this.ons?.length) {
+        var _a;
+        if ((_a = this.ons) === null || _a === void 0 ? void 0 : _a.length) {
             return `${this.cmd} JOIN ${this.table.toSql()} ON ${this.ons.map(i => {
                 return Array.isArray(i) ? `${sqlstring_1.escapeId(i[0])}=${sqlstring_1.escapeId(i[1])}` : i.toSql();
             }).join(' AND ')}`;

@@ -21,10 +21,10 @@ class Field {
     toSql() {
         if (typeof this.field === 'string') {
             let [field, alias] = this.field.split(/ as /i);
-            field = field?.trim();
+            field = field === null || field === void 0 ? void 0 : field.trim();
             if (!field)
                 throw new Error(`Invalid field name: ${this.field}.`);
-            alias = alias?.trim();
+            alias = alias === null || alias === void 0 ? void 0 : alias.trim();
             return alias ? `${sqlstring_1.escapeId(field)} AS ${sqlstring_1.escapeId(alias)}` : sqlstring_1.escapeId(field);
         }
         else {

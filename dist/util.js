@@ -25,10 +25,10 @@ exports.ShakeTableName = (f) => {
     if (!f)
         throw new Error(`Table name can not be null / undifiend: ${f}`);
     let [name, alias] = f.split(/ as /i);
-    name = name?.replace(/\s/g, '');
+    name = name === null || name === void 0 ? void 0 : name.replace(/\s/g, '');
     if (!name)
         throw new Error(`Table name can not be whitespace: ${f}`);
-    alias = alias?.replace(/\s/g, '');
+    alias = alias === null || alias === void 0 ? void 0 : alias.replace(/\s/g, '');
     if (exports.PartInStrCountCheck(name, /\./g, 0, 'gt'))
         throw new Error(`The charactor '.' should not exists in table name: ${f}`);
     return [name, alias];

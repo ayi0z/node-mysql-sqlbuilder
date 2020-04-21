@@ -21,33 +21,39 @@ class SqlBuilder {
         return this;
     }
     field(opt) {
+        var _a;
         const fields = Array.isArray(opt) ? opt.map(i => new lib_1.Field(i)) : [new lib_1.Field(opt)];
-        this._Sql.fields = this._Sql.fields?.concat(fields) || fields;
+        this._Sql.fields = ((_a = this._Sql.fields) === null || _a === void 0 ? void 0 : _a.concat(fields)) || fields;
         return this;
     }
     count(opt, disAll = 'ALL', alias) {
+        var _a;
         const aggr = [new lib_1.Field(new lib_1.AggrField('COUNT', opt, disAll, alias))];
-        this._Sql.fields = this._Sql.fields?.concat(aggr) || aggr;
+        this._Sql.fields = ((_a = this._Sql.fields) === null || _a === void 0 ? void 0 : _a.concat(aggr)) || aggr;
         return this;
     }
     sum(opt, disAll = 'ALL', alias) {
+        var _a;
         const aggr = [new lib_1.Field(new lib_1.AggrField('SUM', opt, disAll, alias))];
-        this._Sql.fields = this._Sql.fields?.concat(aggr) || aggr;
+        this._Sql.fields = ((_a = this._Sql.fields) === null || _a === void 0 ? void 0 : _a.concat(aggr)) || aggr;
         return this;
     }
     avg(opt, disAll = 'ALL', alias) {
+        var _a;
         const aggr = [new lib_1.Field(new lib_1.AggrField('AVG', opt, disAll, alias))];
-        this._Sql.fields = this._Sql.fields?.concat(aggr) || aggr;
+        this._Sql.fields = ((_a = this._Sql.fields) === null || _a === void 0 ? void 0 : _a.concat(aggr)) || aggr;
         return this;
     }
     max(opt, disAll = 'ALL', alias) {
+        var _a;
         const aggr = [new lib_1.Field(new lib_1.AggrField('MAX', opt, disAll, alias))];
-        this._Sql.fields = this._Sql.fields?.concat(aggr) || aggr;
+        this._Sql.fields = ((_a = this._Sql.fields) === null || _a === void 0 ? void 0 : _a.concat(aggr)) || aggr;
         return this;
     }
     min(opt, disAll, alias) {
+        var _a;
         const aggr = [new lib_1.Field(new lib_1.AggrField('MIN', opt, disAll, alias))];
-        this._Sql.fields = this._Sql.fields?.concat(aggr) || aggr;
+        this._Sql.fields = ((_a = this._Sql.fields) === null || _a === void 0 ? void 0 : _a.concat(aggr)) || aggr;
         return this;
     }
     where(opt) {
@@ -66,8 +72,9 @@ class SqlBuilder {
         this._Sql.data = this._Sql.data || [];
         const opts = Array.isArray(opt) ? opt : [opt];
         opts.forEach(o => {
+            var _a;
             if (o)
-                this._Sql.data?.push(new lib_1.InsertData(o));
+                (_a = this._Sql.data) === null || _a === void 0 ? void 0 : _a.push(new lib_1.InsertData(o));
         });
         return this;
     }
@@ -77,9 +84,10 @@ class SqlBuilder {
         return this;
     }
     group(opt) {
+        var _a;
         opt = typeof opt === 'string' ? opt.split(',').filter(i => i) : opt;
         const groups = opt.map(i => new lib_1.Group(i));
-        this._Sql.group = this._Sql.group?.concat(groups) || groups;
+        this._Sql.group = ((_a = this._Sql.group) === null || _a === void 0 ? void 0 : _a.concat(groups)) || groups;
         return this;
     }
     having(opt) {
@@ -129,36 +137,41 @@ class SqlBuilder {
         return this._Sql.table.toSql();
     }
     _fields() {
-        const fields = this._Sql.fields?.map(f => f.toSql());
-        if (fields?.length)
+        var _a;
+        const fields = (_a = this._Sql.fields) === null || _a === void 0 ? void 0 : _a.map(f => f.toSql());
+        if (fields === null || fields === void 0 ? void 0 : fields.length)
             return fields.join(',');
         throw new Error('fields is required');
     }
     _sets() {
-        const sets = this._Sql.sets?.map(s => s.toSql());
-        if (sets?.length)
-            return `${sets?.join(',')}`;
+        var _a;
+        const sets = (_a = this._Sql.sets) === null || _a === void 0 ? void 0 : _a.map(s => s.toSql());
+        if (sets === null || sets === void 0 ? void 0 : sets.length)
+            return `${sets === null || sets === void 0 ? void 0 : sets.join(',')}`;
         throw new Error('sets is required');
     }
     _where() {
-        if (this._Sql.where?.length) {
+        var _a;
+        if ((_a = this._Sql.where) === null || _a === void 0 ? void 0 : _a.length) {
             return ` WHERE ${this._Sql.where.map(i => i.toSql()).filter(i => i).join(' AND ')}`;
         }
         return '';
     }
     _group() {
+        var _a, _b;
         let group;
-        if (this._Sql.group?.length)
+        if ((_a = this._Sql.group) === null || _a === void 0 ? void 0 : _a.length)
             group = ` GROUP BY ${this._Sql.group.map(g => g.toSql()).join(', ')}`;
         if (group) {
-            if (this._Sql.having?.length)
+            if ((_b = this._Sql.having) === null || _b === void 0 ? void 0 : _b.length)
                 group = `${group} HAVING ${this._Sql.having.map(i => i.toSql()).join(' AND ')}`;
             return group;
         }
         return '';
     }
     _order() {
-        if (this._Sql.order?.length)
+        var _a;
+        if ((_a = this._Sql.order) === null || _a === void 0 ? void 0 : _a.length)
             return ` ORDER BY ${this._Sql.order.map(i => i.toSql()).join(', ')}`;
         return '';
     }
@@ -166,21 +179,25 @@ class SqlBuilder {
         return this._Sql.limit ? this._Sql.limit.toSql() : '';
     }
     _data() {
-        if (this._Sql.data?.length) {
+        var _a;
+        if ((_a = this._Sql.data) === null || _a === void 0 ? void 0 : _a.length) {
             return this._Sql.data.map(d => d.toSql());
         }
         throw new Error('data is required');
     }
     _union() {
-        const ul = this._Sql.union?.map(i => i.toSql());
+        var _a;
+        const ul = (_a = this._Sql.union) === null || _a === void 0 ? void 0 : _a.map(i => i.toSql());
         return ul ? ` UNION ${ul.join(' UNION ')}` : '';
     }
     _unionAll() {
-        const ul = this._Sql.unionAll?.map(i => i.toSql());
+        var _a;
+        const ul = (_a = this._Sql.unionAll) === null || _a === void 0 ? void 0 : _a.map(i => i.toSql());
         return ul ? ` UNION ALL ${ul.join(' UNION ALL ')}` : '';
     }
     _join() {
-        if (this._Sql.join?.length) {
+        var _a;
+        if ((_a = this._Sql.join) === null || _a === void 0 ? void 0 : _a.length) {
             return ` ${this._Sql.join.map(i => i.toSql()).join(' ')}`;
         }
         return '';
