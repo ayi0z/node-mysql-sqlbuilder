@@ -1,20 +1,26 @@
 {
     "compilerOptions": {
         "module": "commonjs",
-        "target": "es6",
+        "target": "esnext",
         "moduleResolution": "node",
+        "declaration": true,
         "allowJs": true,
+        "noLib": false,
+        "esModuleInterop": true,
         "noImplicitAny": true,
         "removeComments": true,
+        "preserveConstEnums": true,
         "strictNullChecks": true,
         "strict": true,
         "outDir": "dist/",
         "baseUrl": "."
     },
     "include": [
-        "src", "test"
+        "src",
+        "src/test"
     ],
     "exclude": [
-        "node_modules", "gulpfile.js"
+        "node_modules",
+        "gulpfile.js"
     ]
 }

@@ -1,32 +1,29 @@
-const gulp = require('gulp')
-const gts = require('gulp-typescript')
-const buffer = require('vinyl-buffer')
-const uglify = require('gulp-uglify')
-const sourcemaps = require('gulp-sourcemaps')
-const eslint = require('gulp-eslint')
+var gulp = require('gulp')
+var gts = require('gulp-typescript')
+var buffer = require('vinyl-buffer')
+var terser = require('gulp-terser')
+var eslint = require('gulp-eslint')
 
-const ts = gts.createProject('tsconfig.js')
-const { series } = gulp
+var ts = gts.createProject('tsconfig.json')
+var { series } = gulp
 
-const tEslint = () => {
+var tEslint = () => {
     return ts.src()
         .pipe(eslint())
         .pipe(eslint.format())
         .pipe(eslint.failAfterError())
 }
 
-const tClearDist = () => {
+var tClearDist = () => {
     return require('del')('dist')
 }
 
-const build = () => {
+var build = () => {
     return ts.src()
         .pipe(ts())
         .js
         .pipe(buffer())
-        .pipe(sourcemaps.init({ loadMaps: true }))
-        .pipe(uglify())
-        .pipe(sourcemaps.write('./'))
+        .pipe(terser())
         .pipe(gulp.dest('dist'))
 }
 

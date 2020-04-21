@@ -1,0 +1,57 @@
+import { ISql, ISqlBuilder, SortType, DataType, DistAllType, IJoin, JoinOnType } from "./isqlbuilder";
+import { Table, Field, Where, Set, Order, Group, Limit, Union, InsertData } from './lib';
+export declare class Sql implements ISql {
+    table: Table;
+    fields?: Field[];
+    where?: Where[];
+    sets?: Set[];
+    order?: Order[];
+    group?: Group[];
+    having?: Where[];
+    limit?: Limit;
+    data?: InsertData[];
+    join?: IJoin[];
+    union?: Union[];
+    unionAll?: Union[];
+    private _sb;
+    constructor(sb: ISqlBuilder);
+    SqlBuilder(): ISqlBuilder;
+}
+declare class SqlBuilder implements ISqlBuilder {
+    private _Sql;
+    constructor(table?: string);
+    table(opt: string): this;
+    field(opt: string | string[]): this;
+    count(opt: string, disAll?: DistAllType, alias?: string): this;
+    sum(opt: string, disAll?: DistAllType, alias?: string): this;
+    avg(opt: string, disAll?: DistAllType, alias?: string): this;
+    max(opt: string, disAll?: DistAllType, alias?: string): this;
+    min(opt: string, disAll: DistAllType, alias?: string): this;
+    where(opt: string | object): this;
+    set(opt: string | DataType): this;
+    data(opt: DataType | ISql | (DataType | ISql)[]): this;
+    order(opt: string, so?: SortType): this;
+    group(opt: string | string[]): this;
+    having(opt: string | object): this;
+    limit(begin: number, end?: number): this;
+    union(opt: string | ISql): this;
+    unionAll(opt: string | ISql): this;
+    join(table: string, cmd?: JoinOnType): IJoin;
+    select(): string;
+    update(): string;
+    delete(): string;
+    insert(): string | string[];
+    private _table;
+    private _fields;
+    private _sets;
+    private _where;
+    private _group;
+    private _order;
+    private _limit;
+    private _data;
+    private _union;
+    private _unionAll;
+    private _join;
+    Sql(): ISql;
+}
+export default SqlBuilder;

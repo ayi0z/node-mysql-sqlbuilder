@@ -1,5 +1,5 @@
 import { throwTest, toBeTest } from './common'
-import { Group } from '../../src/lib'
+import { Group } from '../../lib'
 
 const good: [string, string][] = [
     ['fieldname', '`fieldname`'],

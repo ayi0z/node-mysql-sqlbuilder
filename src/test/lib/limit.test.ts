@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { toBeTest } from './common'
-import { Limit } from '../../src/lib'
+import { Limit } from '../../lib'
 
 const good: [any, string][] = [
     [1, ' LIMIT 1'],

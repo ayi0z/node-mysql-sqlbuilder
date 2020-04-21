@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { toBeTest, throwTest } from './common'
-import { Order } from '../../src/lib'
+import { Order } from '../../lib'
 
 const good: [any, string][] = [
     [['filename'], '`filename` ASC'],

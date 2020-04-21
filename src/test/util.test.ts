@@ -1,4 +1,4 @@
-import { PartInStrCountCheck, ShakeFieldName, ShakeTableName } from '../src/util'
+import { PartInStrCountCheck, ShakeFieldName, ShakeTableName } from '../util'
 
 test(`CheckPartInStr: `, () => {
     expect(PartInStrCountCheck('abcdeas.d..c', /\./g, 3)).toBeTruthy()

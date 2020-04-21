@@ -1,4 +1,4 @@
-import { Table } from '../../src/lib/table'
+import { Table } from '../../lib/table'
 import { throwTest, toBeTest } from './common'
 
 const good: [string, string][] = [

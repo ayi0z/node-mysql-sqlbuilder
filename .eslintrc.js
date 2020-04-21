@@ -11,7 +11,7 @@ module.exports = {
         ecmaFeatures: {
             modules: true
         },
-        project: ['./tsconfig.json']
+        project: ['tsconfig.json']
     },
     extends: [
         'eslint:recommended',

@@ -3,5 +3,6 @@ module.exports = {
   testEnvironment: 'node',
   verbose: true,
   collectCoverage: true,
-  cache: false
+  cache: false,
+  moduleFileExtensions:['ts','js','json','node']
 };
