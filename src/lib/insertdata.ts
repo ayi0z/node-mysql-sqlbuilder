@@ -24,7 +24,7 @@ export class InsertData implements IFieldFn {
                 v.push(escape((this.data as DataType)[k]))
             }
             field = f.join(',')
-            values = `VALUES (${v.join(',')})`
+            values = `VALUES(${v.join(',')})`
         }
         if (field.trim() && values.trim()) return [field, values]
         throw new Error('Invalid data')
