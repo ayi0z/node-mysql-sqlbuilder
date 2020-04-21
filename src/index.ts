@@ -36,7 +36,7 @@ export class Sql implements ISql {
  * 改 DELETE  
  * 查 UPDATE
  */
-class SqlBuilder implements ISqlBuilder {
+export class SqlBuilder implements ISqlBuilder {
     private _Sql: ISql
     /**
      * 
@@ -292,5 +292,3 @@ class SqlBuilder implements ISqlBuilder {
         return this._Sql
     }
 }
-
-export default SqlBuilder

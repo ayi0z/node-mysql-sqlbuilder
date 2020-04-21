@@ -17,7 +17,7 @@ export declare class Sql implements ISql {
     constructor(sb: ISqlBuilder);
     SqlBuilder(): ISqlBuilder;
 }
-declare class SqlBuilder implements ISqlBuilder {
+export declare class SqlBuilder implements ISqlBuilder {
     private _Sql;
     constructor(table?: string);
     table(opt: string): this;
@@ -54,4 +54,3 @@ declare class SqlBuilder implements ISqlBuilder {
     private _join;
     Sql(): ISql;
 }
-export default SqlBuilder;

@@ -189,4 +189,4 @@ class SqlBuilder {
         return this._Sql;
     }
 }
-exports.default = SqlBuilder;
+exports.SqlBuilder = SqlBuilder;
