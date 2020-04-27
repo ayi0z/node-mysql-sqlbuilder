@@ -24,7 +24,7 @@ class InsertData {
                 v.push(sqlstring_1.escape(this.data[k]));
             }
             field = f.join(',');
-            values = `VALUES (${f.join(',')})`;
+            values = `VALUES(${v.join(',')})`;
         }
         if (field.trim() && values.trim())
             return [field, values];

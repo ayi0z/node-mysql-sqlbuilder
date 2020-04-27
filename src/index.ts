@@ -1,7 +1,7 @@
 import { ISql, ISqlBuilder, SortType, DataType, DistAllType, IJoin, JoinOnType, WhereArgType } from "./isqlbuilder"
 import {
     Table, Field, AggrField, Where, Set, Order,
-    Group, Limit, Union, InsertData, Join
+    Group, Limit, Union, InsertData, Join, FnField
 } from './lib'
 
 export class Sql implements ISql {
@@ -70,6 +70,11 @@ export class SqlBuilder implements ISqlBuilder {
         this._Sql.fields = this._Sql.fields?.concat(fields) || fields
         return this
     }
+    fnField(opt: string, alias?: string): this {
+        const fields = [new Field(new FnField(opt, alias))]
+        this._Sql.fields = this._Sql.fields?.concat(fields) || fields
+        return this
+    }
     /**
      * 聚合函数count
      * @param opt 聚合计算的查询字段名称
@@ -78,8 +83,8 @@ export class SqlBuilder implements ISqlBuilder {
      * @example
      * eg. ('id', 'DISTINCT', 'idcount') => COUNT(DISTINCT `id`) AS `idcount`
      */
-    count(opt: string, disAll: DistAllType = 'ALL', alias?: string): this {
-        const aggr: Field[] = [new Field(new AggrField('COUNT', opt, disAll, alias))]
+    count(opt: string, disAll: DistAllType = 'ALL'): this {
+        const aggr: Field[] = [new Field(new AggrField('COUNT', opt, disAll))]
         this._Sql.fields = this._Sql.fields?.concat(aggr) || aggr
         return this
     }
@@ -91,8 +96,8 @@ export class SqlBuilder implements ISqlBuilder {
      * @example
      * eg. ('id', 'DISTINCT', 'idsum') => SUM(DISTINCT `id`) AS `idsum`
      */
-    sum(opt: string, disAll: DistAllType = 'ALL', alias?: string): this {
-        const aggr: Field[] = [new Field(new AggrField('SUM', opt, disAll, alias))]
+    sum(opt: string, disAll: DistAllType = 'ALL'): this {
+        const aggr: Field[] = [new Field(new AggrField('SUM', opt, disAll))]
         this._Sql.fields = this._Sql.fields?.concat(aggr) || aggr
         return this
     }
@@ -104,8 +109,8 @@ export class SqlBuilder implements ISqlBuilder {
      * @example
      * eg. ('id', 'DISTINCT', 'idavg') => AVG(DISTINCT `id`) AS `idavg`
      */
-    avg(opt: string, disAll: DistAllType = 'ALL', alias?: string): this {
-        const aggr: Field[] = [new Field(new AggrField('AVG', opt, disAll, alias))]
+    avg(opt: string, disAll: DistAllType = 'ALL'): this {
+        const aggr: Field[] = [new Field(new AggrField('AVG', opt, disAll))]
         this._Sql.fields = this._Sql.fields?.concat(aggr) || aggr
         return this
     }
@@ -117,8 +122,8 @@ export class SqlBuilder implements ISqlBuilder {
      * @example
      * eg. ('id', 'DISTINCT', 'maxid') => MAX(DISTINCT `id`) AS `maxid`
      */
-    max(opt: string, disAll: DistAllType = 'ALL', alias?: string): this {
-        const aggr: Field[] = [new Field(new AggrField('MAX', opt, disAll, alias))]
+    max(opt: string, disAll: DistAllType = 'ALL'): this {
+        const aggr: Field[] = [new Field(new AggrField('MAX', opt, disAll))]
         this._Sql.fields = this._Sql.fields?.concat(aggr) || aggr
         return this
     }
@@ -130,8 +135,8 @@ export class SqlBuilder implements ISqlBuilder {
      * @example
      * eg. ('id', 'DISTINCT', 'minid') => MIN(DISTINCT `id`) AS `minid`
      */
-    min(opt: string, disAll: DistAllType, alias?: string): this {
-        const aggr: Field[] = [new Field(new AggrField('MIN', opt, disAll, alias))]
+    min(opt: string, disAll: DistAllType): this {
+        const aggr: Field[] = [new Field(new AggrField('MIN', opt, disAll))]
         this._Sql.fields = this._Sql.fields?.concat(aggr) || aggr
         return this
     }

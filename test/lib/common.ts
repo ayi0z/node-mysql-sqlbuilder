@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable jest/no-export */
 import assert = require('assert')
-import { IFieldFn } from '../../isqlbuilder'
+import { IFieldFn } from '../../src/isqlbuilder'
 
 export const toBeTest = <T extends IFieldFn>(c: new (...args: any[]) => T,be: string,  ...opt: any[]): void => {
     test(`'${opt}' => '${be}'`, () => {

@@ -22,11 +22,12 @@ export declare class SqlBuilder implements ISqlBuilder {
     constructor(table?: string);
     table(opt: string): this;
     field(opt: string | string[]): this;
-    count(opt: string, disAll?: DistAllType, alias?: string): this;
-    sum(opt: string, disAll?: DistAllType, alias?: string): this;
-    avg(opt: string, disAll?: DistAllType, alias?: string): this;
-    max(opt: string, disAll?: DistAllType, alias?: string): this;
-    min(opt: string, disAll: DistAllType, alias?: string): this;
+    fnField(opt: string, alias?: string): this;
+    count(opt: string, disAll?: DistAllType): this;
+    sum(opt: string, disAll?: DistAllType): this;
+    avg(opt: string, disAll?: DistAllType): this;
+    max(opt: string, disAll?: DistAllType): this;
+    min(opt: string, disAll: DistAllType): this;
     where(opt: string | object): this;
     set(opt: string | DataType): this;
     data(opt: DataType | ISql | (DataType | ISql)[]): this;

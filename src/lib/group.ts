@@ -5,7 +5,7 @@ import { ShakeFieldName } from "../util"
 export class Group implements IFieldFn {
     field: string
     constructor(f: string) {
-        this.field = ShakeFieldName(f)
+        this.field = ShakeFieldName(f)[0]
     }
 
     toSql(): string {

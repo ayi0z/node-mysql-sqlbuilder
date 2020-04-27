@@ -4,7 +4,13 @@ export declare class AggrField implements IFieldFn {
     field: string;
     disAll: DistAllType;
     alias?: string | undefined;
-    constructor(fn: IAggrFnType, field: string, disAll?: DistAllType, alias?: string);
+    constructor(fn: IAggrFnType, field: string, disAll?: DistAllType);
+    toSql(): string;
+}
+export declare class FnField implements IFieldFn {
+    field: string;
+    alias?: string;
+    constructor(f: string, alias?: string);
     toSql(): string;
 }
 export declare class Field implements IFieldFn {

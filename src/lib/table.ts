@@ -12,6 +12,6 @@ export class Table implements IFieldFn {
     }
 
     toSql(): string {
-        return this.alias ? `${escapeId(this.name)} AS ${escapeId(this.alias)}` : escapeId(this.name)
+        return this.alias && `${escapeId(this.name)} AS ${escapeId(this.alias)}` || escapeId(this.name)
     }
 }

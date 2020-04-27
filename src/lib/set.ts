@@ -7,6 +7,7 @@ export class Set implements IFieldFn {
         this.field = f
     }
     toSql(): string {
+        // sql语句字符串
         if (typeof this.field === 'string') return this.field
 
         const ks: string[] = []

@@ -13,6 +13,9 @@ module.exports = {
         },
         project: ['tsconfig.json']
     },
+    env: {
+        jest: true
+    },
     extends: [
         'eslint:recommended',
         'plugin:@typescript-eslint/eslint-recommended',

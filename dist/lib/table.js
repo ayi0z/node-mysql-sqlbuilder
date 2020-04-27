@@ -9,7 +9,7 @@ class Table {
         this.alias = alias;
     }
     toSql() {
-        return this.alias ? `${sqlstring_1.escapeId(this.name)} AS ${sqlstring_1.escapeId(this.alias)}` : sqlstring_1.escapeId(this.name);
+        return this.alias && `${sqlstring_1.escapeId(this.name)} AS ${sqlstring_1.escapeId(this.alias)}` || sqlstring_1.escapeId(this.name);
     }
 }
 exports.Table = Table;

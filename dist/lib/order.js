@@ -4,7 +4,7 @@ const sqlstring_1 = require("sqlstring");
 const util_1 = require("../util");
 class Order {
     constructor(f, s = 'ASC') {
-        this.field = util_1.ShakeFieldName(f);
+        this.field = util_1.ShakeFieldName(f)[0];
         this.sort = s;
     }
     toSql() {

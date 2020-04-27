@@ -7,7 +7,7 @@ export class Order implements IFieldFn {
     sort: SortType
 
     constructor(f: string, s: SortType = 'ASC') {
-        this.field = ShakeFieldName(f)
+        this.field = ShakeFieldName(f)[0]
         this.sort = s
     }
 

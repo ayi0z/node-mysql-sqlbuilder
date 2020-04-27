@@ -1,23 +1,38 @@
 import { IFieldFn, IAggrFnType, DistAllType } from "../isqlbuilder"
 import { escapeId } from 'sqlstring'
+import { ShakeFieldName } from '../util'
 
 export class AggrField implements IFieldFn {
     fun: IAggrFnType
     field: string
     disAll: DistAllType
     alias?: string | undefined
-    constructor(fn: IAggrFnType, field: string, disAll: DistAllType = 'ALL', alias?: string) {
+    constructor(fn: IAggrFnType, field: string, disAll: DistAllType = 'ALL') {
         this.fun = fn
-        this.field = field
         this.disAll = disAll
-        this.alias = alias
+        const [f, a] = ShakeFieldName(field)
+        this.field = f
+        this.alias = a
     }
 
     toSql(): string {
         const field = `${this.fun}(${this.disAll} ${escapeId(this.field)})`
-        return this.alias ? `${field} AS ${escapeId(this.alias)}` : field
+        return this.alias && `${field} AS ${escapeId(this.alias)}` || field
     }
 
+}
+
+export class FnField implements IFieldFn {
+    field: string
+    alias?: string
+    constructor(f: string, alias?: string) {
+        this.field = f;
+        this.alias = alias
+    }
+    toSql(): string {
+
+        return this.alias && `${this.field} AS ${escapeId(this.alias)}` || this.field
+    }
 }
 
 export class Field implements IFieldFn {
@@ -28,12 +43,8 @@ export class Field implements IFieldFn {
 
     toSql(): string {
         if (typeof this.field === 'string') {
-            let [field, alias] = this.field.split(/ as /i)
-            field = field?.trim()
-            if (!field) throw new Error(`Invalid field name: ${this.field}.`)
-
-            alias = alias?.trim()
-            return alias ? `${escapeId(field)} AS ${escapeId(alias)}` : escapeId(field)
+            const [field, alias] = ShakeFieldName(this.field)
+            return alias && `${escapeId(field)} AS ${escapeId(alias)}` || escapeId(field)
         } else {
             return this.field.toSql() as string
         }

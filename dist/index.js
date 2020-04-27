@@ -26,33 +26,39 @@ class SqlBuilder {
         this._Sql.fields = ((_a = this._Sql.fields) === null || _a === void 0 ? void 0 : _a.concat(fields)) || fields;
         return this;
     }
-    count(opt, disAll = 'ALL', alias) {
+    fnField(opt, alias) {
         var _a;
-        const aggr = [new lib_1.Field(new lib_1.AggrField('COUNT', opt, disAll, alias))];
+        const fields = [new lib_1.Field(new lib_1.FnField(opt, alias))];
+        this._Sql.fields = ((_a = this._Sql.fields) === null || _a === void 0 ? void 0 : _a.concat(fields)) || fields;
+        return this;
+    }
+    count(opt, disAll = 'ALL') {
+        var _a;
+        const aggr = [new lib_1.Field(new lib_1.AggrField('COUNT', opt, disAll))];
         this._Sql.fields = ((_a = this._Sql.fields) === null || _a === void 0 ? void 0 : _a.concat(aggr)) || aggr;
         return this;
     }
-    sum(opt, disAll = 'ALL', alias) {
+    sum(opt, disAll = 'ALL') {
         var _a;
-        const aggr = [new lib_1.Field(new lib_1.AggrField('SUM', opt, disAll, alias))];
+        const aggr = [new lib_1.Field(new lib_1.AggrField('SUM', opt, disAll))];
         this._Sql.fields = ((_a = this._Sql.fields) === null || _a === void 0 ? void 0 : _a.concat(aggr)) || aggr;
         return this;
     }
-    avg(opt, disAll = 'ALL', alias) {
+    avg(opt, disAll = 'ALL') {
         var _a;
-        const aggr = [new lib_1.Field(new lib_1.AggrField('AVG', opt, disAll, alias))];
+        const aggr = [new lib_1.Field(new lib_1.AggrField('AVG', opt, disAll))];
         this._Sql.fields = ((_a = this._Sql.fields) === null || _a === void 0 ? void 0 : _a.concat(aggr)) || aggr;
         return this;
     }
-    max(opt, disAll = 'ALL', alias) {
+    max(opt, disAll = 'ALL') {
         var _a;
-        const aggr = [new lib_1.Field(new lib_1.AggrField('MAX', opt, disAll, alias))];
+        const aggr = [new lib_1.Field(new lib_1.AggrField('MAX', opt, disAll))];
         this._Sql.fields = ((_a = this._Sql.fields) === null || _a === void 0 ? void 0 : _a.concat(aggr)) || aggr;
         return this;
     }
-    min(opt, disAll, alias) {
+    min(opt, disAll) {
         var _a;
-        const aggr = [new lib_1.Field(new lib_1.AggrField('MIN', opt, disAll, alias))];
+        const aggr = [new lib_1.Field(new lib_1.AggrField('MIN', opt, disAll))];
         this._Sql.fields = ((_a = this._Sql.fields) === null || _a === void 0 ? void 0 : _a.concat(aggr)) || aggr;
         return this;
     }
