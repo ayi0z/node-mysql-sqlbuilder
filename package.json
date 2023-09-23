@@ -1,9 +1,8 @@
 {
   "name": "node-mysql-sqlbuilder",
-  "version": "1.0.0",
-  "description": "sql string generator for mysql in node",
+  "version": "0.0.1",
+  "description": "sql string generator for mysql on node",
   "main": "dist/index.js",
-  "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
@@ -18,6 +17,8 @@
     "type": "git",
     "url": "git+https://github.com/ayi0z/node-mysql-sqlbuilder.git"
   },
+  "author": "ayioz@qq.com",
+  "license": "ISC",
   "homepage": "https://github.com/ayi0z/node-mysql-sqlbuilder#readme",
   "engines": {
     "node": "^12.16.2",
@@ -26,27 +27,25 @@
   "scripts": {
     "test": "jest",
     "test.watch": "jest --watch",
-    "build": "gulp && tsc",
-    "eslint": "eslint src --ext .ts"
+    "build": "rollup -c",
+    "lint": "eslint src --ext .ts"
   },
-  "author": "ayioz@icloud.com",
-  "license": "ISC",
   "devDependencies": {
-    "@types/jest": "^25.2.1",
+    "@rollup/plugin-commonjs": "^21.0.1",
+    "@rollup/plugin-node-resolve": "^13.0.6",
+    "@types/jest": "^25.2.3",
     "@types/node": "^13.13.4",
     "@types/sqlstring": "^2.2.1",
-    "@typescript-eslint/eslint-plugin": "^2.28.0",
-    "@typescript-eslint/parser": "^2.28.0",
-    "eslint": "^6.8.0",
+    "@typescript-eslint/eslint-plugin": "^5.1.0",
+    "@typescript-eslint/parser": "^5.1.0",
+    "eslint": "^8.1.0",
     "eslint-plugin-jest": "^23.8.2",
-    "gulp": "^4.0.2",
-    "gulp-clean": "^0.4.0",
-    "gulp-eslint": "^6.0.0",
-    "gulp-terser": "^1.2.0",
-    "gulp-typescript": "^6.0.0-alpha.1",
-    "jest": "^25.3.0",
-    "ts-jest": "^25.4.0",
-    "typescript": "^3.8.3"
+    "jest": "^27.3.1",
+    "rollup": "^2.58.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript2": "^0.30.0",
+    "ts-jest": "^27.0.7",
+    "typescript": "4.4.4"
   },
   "dependencies": {
     "sqlstring": "^2.3.2"

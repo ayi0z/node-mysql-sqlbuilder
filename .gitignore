@@ -1,3 +1,4 @@
 node_modules
-GUIDE.md
 coverage
+dist
+.DS_Store

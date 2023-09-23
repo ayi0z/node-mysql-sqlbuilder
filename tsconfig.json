@@ -1,24 +1,20 @@
 {
-    "compilerOptions": {
-        "module": "commonjs",
-        "target": "es6",
-        "moduleResolution": "node",
-        "declaration": true,
-        "allowJs": true,
-        "esModuleInterop": true,
-        "noImplicitAny": true,
-        "removeComments": true,
-        "strictNullChecks": true,
-        "strict": true,
-        "outDir": "dist/",
-        "baseUrl": "."
-    },
-    "include": [
-        "src"
-    ],
-    "exclude": [
-        "node_modules",
-        "gulpfile.js",
-        "test"
-    ]
+  "compilerOptions": {
+    "module": "ESNext",
+    "target": "es6",
+    "moduleResolution": "node",
+    "declaration": true,
+    "declarationDir": "dist/",
+    "allowJs": true,
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "noImplicitAny": true,
+    "removeComments": true,
+    "strictNullChecks": true,
+    "strict": true,
+    "outDir": "dist/",
+    "baseUrl": "."
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "test"]
 }
